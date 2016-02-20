@@ -9,7 +9,7 @@ var places = require('../pages/places.js');
 var glossary = require('../pages/glossary.js');
 
 server.connection({
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 8000
 });
 
@@ -25,13 +25,11 @@ server.route({
   method: 'GET',
   path:'/charities',
   handler: (request, reply) => {
-
-    var orgHunterKey = process.env.ORGHUNTER_KEY;
-
+    
     var orgHunterReq = {
       method: 'GET',
       host: 'data.orghunter.com',
-      path: '/v1/charitysearch?user_key=' + orgHunterKey + '&rows=1000&eligible=1'
+      path: '/v1/charitysearch?user_key=7b302cfd41ae4d5417695cb4030edfa6&rows=1000&eligible=1'
     };
 
     callback = (response) => {
