@@ -3,14 +3,7 @@
    background: url('/dist/img/bg2.jpg'); 
    background-size: cover;
    background-position-y: -200px;
-   
-   .cadet {
-        width: 250px;
-        position: absolute;
-        top: 296px;
-        left: 117px;
-    }   
-    
+       
     .footer {
         .btn {
             margin-top: 40px;
@@ -18,5 +11,12 @@
             color: #fff !important;
             outline: none;            
         }
+        
+       .cadet {
+            position: absolute;
+            bottom: 75px;
+            left: 50px;
+            width: 300px;
+        }        
     }
 }
