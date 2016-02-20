@@ -9,7 +9,7 @@ var places = require('../pages/places.js');
 var glossary = require('../pages/glossary.js');
 
 server.connection({
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 8000
 });
 
