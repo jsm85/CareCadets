@@ -13,7 +13,7 @@ var books = {
 var clothes = {
   name: 'clothes',
   verb: 'wear',
-  effect: 'have lots of fun wearing'
+  effect: 'feel nice and clean wearing'
 };
 
 var donationTypes = {
