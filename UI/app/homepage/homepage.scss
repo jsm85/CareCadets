@@ -1,0 +1,72 @@
+$orange: #FF7600;
+
+.homepage {
+    background: url('/dist/img/bg.jpg');
+    background-size: cover;
+    background-position-y: 200px;
+    
+    .logo {
+        position: absolute;
+        top: 21px;
+        left: 50%;
+        margin-left: -226px;
+        width: 385px;   
+    }
+    
+    .boy {
+        position: absolute;
+        bottom: 75px;
+        left: 50px;        
+        width: 300px;                        
+    }
+    
+    .login {
+        width: 300px;
+        background-color: #FFF;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);        
+        
+        label {
+            left: 0;
+        }
+        
+        .btn {
+            width: 100%;
+            color: #fff;
+            outline: none;            
+        }
+        
+        .remember-me {
+            margin-top: 10px;
+            margin-bottom: -10px;
+                        
+            label {
+                padding-left: 26px;
+                font-size: 11px;
+                font-weight: normal;                
+            }
+        }
+        
+        .forgot-password {
+            font-size: 11px;
+            float: right;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    }
+    
+    .register {
+        position: absolute;
+        top: 271px;
+        right: 50px;
+        font-weight: 700;
+        color: #666;
+        cursor: pointer;
+        font-size: 14px;
+    }
+}
+    

@@ -6,6 +6,9 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.timeout = $timeout;
             this.redirectService = redirectService;
         }
+        RegistrationController.prototype.register = function () {
+            this.redirectService.to('room');
+        };
         RegistrationController.$inject = [
             '$scope',
             '$timeout',

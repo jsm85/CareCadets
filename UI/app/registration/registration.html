@@ -1,5 +1,38 @@
 <div class="registration expand" ng-controller="RegistrationController as registrationCtrl">
 
-Registration    
+    <div class="header">
+    </div>
     
+    <form name="registration">
+        <div class="account-details">
+            <p>Account Details</p>            
+            <div class="input-field">
+                <input placeholder="Please enter your email" id="email" type="text" ng-model="registrationCtrl.email" />
+                <label for="email" class="active">Email</label>
+            </div>          
+            <div class="input-field">
+                <input placeholder="Please enter your password" id="password" type="password" ng-model="registrationCtrl.password">
+                <label for="password" class="active">Password</label>
+            </div>    
+            <div class="input-field">
+                <input placeholder="Please confirm your password" id="confirm-password" type="password" ng-model="registrationCtrl.confirmPassword">
+                <label for="confirm-password" class="active">Confirm Password</label>
+            </div>    
+        </div>
+        
+        <div class="new-cadet">
+            <p>New Cadet</p>
+            <div class="input-field">
+                <input placeholder="Please enter your name" id="name" type="text" ng-model="registrationCtrl.name" />
+                <label for="name" class="active">Name</label>
+            </div>     
+            <div class="cadet">
+            </div>     
+        </div>
+
+        <button class="waves-effect waves-light btn" ng-click="registrationCtrl.register()">Register</button>        
+    </form>
+        
+    <div class="footer">
+    </div>    
 </div>

@@ -1,5 +1,31 @@
 <div class="homepage expand" ng-controller="HomepageController as homeCtrl">
 
-Homepage    
+    <div class="header">
+        <img class="logo" src="/dist/img/logo.png" />
+        <div class="login">
+            <form name="login">
+                <div class="input-field">
+                    <input placeholder="Please enter your email" id="email" type="text" ng-model="homeCtrl.email" />
+                    <label for="email" class="active">Email</label>
+                </div>          
+                <div class="input-field">
+                    <input id="password" type="password" ng-model="homeCtrl.password">
+                    <label for="password" class="active">Password</label>
+                </div>    
+                <button class="waves-effect waves-light btn" ng-click="homeCtrl.login()">Log in</button>         
+                <a class="forgot-password">Forgot your password?</a>
+                <div class="remember-me">
+                     <input type="checkbox" class="filled-in" id="remember-me" />
+                     <label for="remember-me">Remember me</label>
+                </div>     
+            </form>
+        </div>
+        <div class="register">
+            New Cadet? <a ng-click="homeCtrl.register()">Register here!</a>
+        </div>
+    </div>
+    <div class="footer">
+        <img class="boy" src="/dist/img/boy.png" />
+    </div>
     
 </div>

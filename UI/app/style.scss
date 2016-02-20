@@ -1,3 +1,44 @@
+@import "../bower_components/bootstrap/dist/css/bootstrap.css";
+@import "../bower_components/materialize/sass/materialize.scss";
+
+@import "homepage/homepage.scss";
+@import "registration/registration.scss";
+
+$background: #fff;
+$text: #333;
+$grey: #999999;
+$frame: #072858;
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('/dist/font/MaterialIcons-Regular.woff2') format('woff2'),
+       url('/dist/font/MaterialIcons-Regular.woff') format('woff'),
+       url('/dist/font/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -5,9 +46,28 @@ html, body {
     padding: 0;
 	background-color: #fff;
 	color: #333;
+    font-family: Verdana;
 }
 
 .expand {
     width: 100%;
     height: 100%;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: $frame;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: $frame;    
 }

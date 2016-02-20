@@ -18,7 +18,11 @@ class RegistrationController {
 	constructor(scope: ng.IScope, $timeout: ng.ITimeoutService, redirectService: RedirectService) {
 		this.timeout = $timeout;
 		this.redirectService = redirectService;
-	}    
+	}
+    
+    register() {
+        this.redirectService.to('room');
+    }    
 }
 
 LazyLoading.Application.registerController('RegistrationController', RegistrationController);
