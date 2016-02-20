@@ -25,7 +25,7 @@ server.route({
       }
 
       var collection = db.collection('donations');
-      collection.find({user: request.params.username}, (err, docs) => {
+      collection.find({username: request.params.username}, (err, docs) => {
         db.close();
         reply(docs);
       });
