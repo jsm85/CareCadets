@@ -9,17 +9,19 @@
             left: 0;
         }
     
+        p {
+            font-family: 'Militar';
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #FF7600;
+        }
+    
         .account-details {
             width: 40%;
             padding: 20px;
             vertical-align: top;
             display: inline-block;
-            
-            p {
-                font-size: 40px;
-                margin-bottom: 40px;
-            }
-            
+                        
             .input-field {
                 width: 70%;
             }
@@ -32,12 +34,7 @@
             vertical-align: top;
             display: inline-block;
             position: relative;
-            
-            p {
-                font-size: 40px;
-                margin-bottom: 40px;
-            }
-            
+                        
             .input-field {
                 width: calc(100% - 400px);
             }
@@ -56,6 +53,30 @@
                 position: absolute;
                 top: 75px;
                 right: 0;
+            }
+            
+            .left {
+                position: absolute;
+                font-size: 60px;
+                width: 60px;
+                height: 59px;
+                background-color: #039be5;
+                color: #fff;
+                border-radius: 50%;
+                top: 200px;
+                right: 295px;
+            }
+            
+            .right {
+                position: absolute;
+                font-size: 60px;
+                width: 60px;
+                height: 59px;
+                background-color: #039be5;
+                color: #fff;
+                border-radius: 50%;
+                top: 200px;
+                right: -70px;
             }
         }
         
