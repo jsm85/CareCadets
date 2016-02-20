@@ -15,14 +15,6 @@ server.connection({
 
 server.route({
   method: 'GET',
-  path:'/healthcheck',
-  handler: (request, reply) => {
-    reply('CareCadents backend is alive!');
-  }
-});
-
-server.route({
-  method: 'GET',
   path:'/glossary',
   handler: (request, reply) => {
     reply(glossary);
@@ -33,18 +25,34 @@ server.route({
   method: 'GET',
   path:'/charities',
   handler: (request, reply) => {
+
+    var orgHunterKey = process.env.ORGHUNTER_KEY;
+
     var orgHunterReq = {
       method: 'GET',
       host: 'data.orghunter.com',
-      path: '/v1/charitysearch?user_key=' + process.env.ORGHUNTER_KEY + '&rows=1000'
+      path: '/v1/charitysearch?user_key=' + orgHunterKey + '&rows=1000&eligible=1'
     };
 
     callback = (response) => {
       var result = '';
 
-      response.on('data', (chunk) => { result += chunk; });
-      response.on('end', () => { reply(result); });
-    }
+      response.on('data', (chunk) => result += chunk);
+      response.on('end', () => {
+        var payload = JSON.parse(result);
+
+        var allCharities = payload.data;
+        var charitiesAcceptingDonations = [];
+
+        allCharities.forEach(charity => {
+          if (charity.acceptingDonations === 1) {
+            charitiesAcceptingDonations.push(charity);
+          }
+        });
+
+        reply(charitiesAcceptingDonations);
+      });
+    };
 
     http.request(orgHunterReq, callback).end();
   }
