@@ -9,3 +9,4 @@ cd ..
 
 cd server
 nohup node app/index.js
+exit
