@@ -13,5 +13,14 @@
         {
             "name": "Sam Heslop"
         }
-    ]
+    ],
+    "dependencies": {
+        "gulp": "3.9.1",
+        "gulp-util": "3.0.7",
+        "vinyl-ftp": "0.4.5",
+        "minimist": "1.2.0"
+    },
+    "scripts": {
+        "install": "cd server &&  npm install && cd ../UI && npm install"
+    }
 }
