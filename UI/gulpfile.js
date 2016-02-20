@@ -5,5 +5,5 @@ requireDir('./gulp');
 
 //----- Tasks -----
 gulp.task('default', ['clean', 'sass', 'optimize', 'watch']);
-gulp.task('buildUI', ['clean', 'sass', 'optimize']);
+gulp.task('deploy', ['clean', 'sass', 'optimize']);
 
