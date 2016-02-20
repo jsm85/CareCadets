@@ -1,0 +1,17 @@
+{
+    "name": "care-cdets",
+    "version": "0.0.1",
+    "description": "project for the hack.summit hackathon 2016",
+    "author": "jsm85",
+    "contributors": [
+        {
+            "name": "Joe Mendonca"
+        },
+        {
+            "name": "Javier Pardo"
+        },
+        {
+            "name": "Sam Heslop"
+        }
+    ]
+}
