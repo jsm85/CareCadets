@@ -1,5 +1,5 @@
-npm install
-gulp main
+# npm install
+# gulp main
 
 cd UI
 npm install
