@@ -1,0 +1,22 @@
+.room {
+   padding-top: 200px;
+   background: url('/dist/img/bg2.jpg'); 
+   background-size: cover;
+   background-position-y: -200px;
+   
+   .cadet {
+        width: 250px;
+        position: absolute;
+        top: 296px;
+        left: 117px;
+    }   
+    
+    .footer {
+        .btn {
+            margin-top: 40px;
+            margin-left: 45%;
+            color: #fff !important;
+            outline: none;            
+        }
+    }
+}
