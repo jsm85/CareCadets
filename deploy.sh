@@ -7,6 +7,9 @@ gulp deploy
 
 cd ..
 
+rm /Web/* -fr
+cp UI/* ../Web/ -r
+
 cd server
 nohup node app/index.js
 exit
