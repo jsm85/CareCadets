@@ -8,21 +8,41 @@ var donationTypes = require('../pages/donationTypes.js');
 var places = require('../pages/places.js');
 var glossary = require('../pages/glossary.js');
 
+var mongoDbConnectionString = 'mongodb://localhost:27017/care_cadets';
+
 server.connection({
   host: '0.0.0.0',
   port: 8000
 });
 
 server.route({
-  method: 'POST',
-  path:'/donation',
+  method: 'GET',
+  path:'/donations/{username}',
   handler: (request, reply) => {
-    MongoClient.connect('mongodb://localhost:27017/test', (err, db) => {
+    MongoClient.connect(mongoDbConnectionString, (err, db) => {
       if(err) {
         throw err;
       }
 
-      var collection = db.collection('donation');
+      var collection = db.collection('donations');
+      collection.find({user: request.params.username}, (err, docs) => {
+        db.close();
+        reply(docs);
+      });
+    });
+  }
+});
+
+server.route({
+  method: 'POST',
+  path:'/donations',
+  handler: (request, reply) => {
+    MongoClient.connect(mongoDbConnectionString, (err, db) => {
+      if(err) {
+        throw err;
+      }
+
+      var collection = db.collection('donations');
       collection.insert(request.payload, (err, docs) => {
         db.close();
         reply(docs);
@@ -76,9 +96,9 @@ server.route({
 
 server.route({
   method: 'GET',
-  path:'/pages/{avatarname}/{donationType}/{place}',
+  path:'/pages/{username}/{donationType}/{place}',
   handler: (request, reply) => {
-    var name = request.params.avatarname;
+    var name = request.params.username;
     var dontationType = donationTypes[request.params.donationType];
     var place = places[request.params.place];
 
