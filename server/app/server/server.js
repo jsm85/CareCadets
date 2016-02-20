@@ -14,6 +14,24 @@ server.connection({
 });
 
 server.route({
+  method: 'POST',
+  path:'/donation',
+  handler: (request, reply) => {
+    MongoClient.connect('mongodb://localhost:27017/test', (err, db) => {
+      if(err) {
+        throw err;
+      }
+
+      var collection = db.collection('donation');
+      collection.insert(request.payload, (err, docs) => {
+        db.close();
+        reply(docs);
+      });
+    });
+  }
+});
+
+server.route({
   method: 'GET',
   path:'/glossary',
   handler: (request, reply) => {
