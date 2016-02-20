@@ -1,4 +1,11 @@
 npm install
 gulp main
+
+cd UI
+npm install
+gulp deploy
+
+cd ..
+
 cd server
-node app/index.js
+nohup node app/index.js
