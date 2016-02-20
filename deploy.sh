@@ -1,4 +1,4 @@
 npm install
 gulp main
 cd server
-gulp default
+nodejs app/index.js
