@@ -1,7 +1,7 @@
 var Mongo = require('mongodb');
 var MongoClient = Mongo.MongoClient;
 
-var mongoDbConnectionString = 'mongodb://192.168.99.100:27017/care_cadets';
+var mongoDbConnectionString = 'mongodb://localhost:27017/care_cadets';
 
 var routes = [
   { method: 'GET', path:'/donations/{username}', handler: getDonations },
@@ -22,7 +22,7 @@ function getDonations(request, reply) {
         reply(donations);
     });
   });
-};
+}
 
 function postDonation(request, reply) {
   MongoClient.connect(mongoDbConnectionString, (err, db) => {
@@ -35,7 +35,7 @@ function postDonation(request, reply) {
       reply(docs);
     });
   });
-};
+}
 
 function postThanks(request, reply) {
   MongoClient.connect(mongoDbConnectionString, (err, db) => {

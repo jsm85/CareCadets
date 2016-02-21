@@ -1,3 +1,7 @@
+var routes = [
+  { method: 'GET', path:'/glossary', handler: (request, reply) => reply(glossary) },
+];
+
 var glossary = [{
     expression: 'less fortunate',
     definition: 'People who are less lucky and do not have enough money for nice things.'
@@ -10,4 +14,4 @@ var glossary = [{
   }
 ];
 
-module.exports = glossary;
+module.exports = routes;
