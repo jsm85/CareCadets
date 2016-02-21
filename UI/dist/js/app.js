@@ -7,6 +7,8 @@ define(["require", "exports", 'common/lazyLoading.module', "common/lazyLoading.m
         { url: '/registration', template: 'app/registration/registration.html', controller: 'registration/registration.controller', secure: false },
         { url: '/room', template: 'app/room/room.html', controller: 'room/room.controller', secure: false },
         { url: '/thanks', template: 'app/thanks/thanks.html', controller: 'thanks/thanks.controller', secure: false },
+        { url: '/glossary', template: 'app/glossary/glossary.html', controller: 'glossary/glossary.controller', secure: false },
+        { url: '/info', template: 'app/info/info.html', controller: 'info/info.controller', secure: false },
     ];
     LazyLoading.Application.initializeAngular(Routes);
 });

@@ -35,6 +35,13 @@ $frame: #072858;
   src: url('/dist/font/Stencil_Army.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Handwriting';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/dist/font/LadylikeBB.ttf') format('truetype');
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -64,6 +71,17 @@ html, body {
     font-family: Verdana;
 }
 
+button {
+    font-family: 'Militar';
+    
+    &.big {
+        border: 4px solid #6B2808;
+        border-radius: 10px;
+        height: 60px;
+        font-size: 24px;        
+    }
+}
+
 .expand {
     width: 100%;
     height: 100%;
@@ -74,7 +92,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-color: $frame;
     box-shadow: 1px 5px 5px rgba(0,0,0,0.5);    
 }
@@ -84,9 +102,17 @@ html, body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-color: $frame;    
     box-shadow: 1px -5px 5px rgba(0,0,0,0.5);    
+}
+
+.logo {
+    position: absolute;
+    top: 21px;
+    left: 50%;
+    margin-left: -154px;
+    width: 300px;   
 }
 
 .logo-text {

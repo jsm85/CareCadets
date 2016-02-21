@@ -3,19 +3,11 @@ $orange: #FF7600;
 .homepage {
     background: url('/dist/img/bg.jpg');
     background-size: cover;
-    background-position-y: 200px;
-    
-    .logo {
-        position: absolute;
-        top: 21px;
-        left: 50%;
-        margin-left: -226px;
-        width: 385px;   
-    }
-    
+    background-position-y: 150px;
+        
     .boy {
         position: absolute;
-        bottom: 75px;
+        bottom: 50px;
         left: 50px;        
         width: 300px;                        
     }

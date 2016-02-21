@@ -1,14 +1,51 @@
 <div class="room expand" ng-controller="RoomController as roomCtrl">
 
     <div class="header">
+        <img class="logo" src="/dist/img/logo.png" />
         <div class="logo-text">
             <span class="care">C.A.R.E</span>
             <span class="cadets">Cadets</span>
         </div>
     </div>
-                 
+
+    <div class="message" ng-hide="roomCtrl.message === ''">  
+        <div class="bubble">{{roomCtrl.message}}</div>
+        <div class="little-bubble"></div>
+        <div class="mini-bubble"></div>
+    </div>
+    
+    <div class="items" ng-show="roomCtrl.step === 1">
+        <button class="btn big" ng-click="roomCtrl.selectItem('bear')">BEAR</button>        
+        <button class="btn big" ng-click="roomCtrl.selectItem('clothes')">CLOTHES</button>        
+        <button class="btn big" ng-click="roomCtrl.selectItem('book')">BOOK</button>        
+    </div>
+    
+    <div class="locations" ng-show="roomCtrl.step === 2">
+        <button class="btn big" ng-click="roomCtrl.selectLocation('school')">SCHOOL</button>        
+        <button class="btn big" ng-click="roomCtrl.selectLocation('hospital')">HOSPITAL</button>        
+        <button class="btn big" ng-click="roomCtrl.selectLocation('charity')">CHARITY</button>        
+    </div>
+    
+    <div class="summary" ng-show="roomCtrl.step === 3">
+        <p class="title">BENEFITS OF YOUR DONATION</p>
+        <img src="" />
+        <p class="description">
+            Blah Blah
+        </p>        
+        <p class="organizations">ORGANIZATIONS WHERE I CAN DONATE</p>
+        <ul>
+            <li ng-repeat="organization in roomCtrl.organizations">
+                <a href="{{organization.url}}" target="_blank">{{organization.charityName}}</a>
+                <div class="category">{{organization.missionStatement}}</div>
+                <div class="address">{{organization.city}}, {{organization.state}}</div>
+            </li>
+        </ul>
+    </div>
+             
     <div class="footer">
-        <button class="btn">MAKE A DONATION!</button>
+        <button class="btn big" ng-show="roomCtrl.step === 0" ng-click="roomCtrl.startDonation()">MAKE A DONATION!</button>
+        <button class="btn big" ng-hide="roomCtrl.step === 0" ng-click="roomCtrl.back()">BACK</button>
+        <button class="btn big" ng-show="roomCtrl.step === 3" ng-click="roomCtrl.proceed()">PROCEED</button>
         <img class="cadet" src="/dist/img/girl.png" />
     </div>    
 </div>
