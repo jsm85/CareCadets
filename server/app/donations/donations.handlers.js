@@ -8,12 +8,11 @@ function getDonation(request, reply) {
     if(err) {
       throw err;
     }
-
-    var cursor = db.collection('donations').find({'_id': new Mongo.ObjectID(request.params.donationId)});
-
-    cursor.toArray((err, donations) => {
+    
+    var query = {'_id': new Mongo.ObjectID(request.params.donationId)};
+    db.collection('donations').findOne(query, (err, doc) => {
         db.close();
-        reply(donations[0]);
+        reply(doc);
     });
   });
 }
