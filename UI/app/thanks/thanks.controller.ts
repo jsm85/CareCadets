@@ -5,16 +5,18 @@ import LazyLoading = require('common/lazyLoading.module');
 
 class ThanksController {
 	http: ng.IHttpService;
-	message: String;
 	donationId: String;
-
+	message: String;
+	
 	static $inject = [
 		'$scope',
+		'$routeParams',
 		'$http'
 	];
 
-	constructor(scope: ng.IScope, $http: ng.IHttpService) {
+	constructor(scope: ng.IScope, $routeParams: any, $http: ng.IHttpService) {
 		this.http = $http;
+		this.donationId = $routeParams.donationId;
 	}
 
 	postThankYou() {
