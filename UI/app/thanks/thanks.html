@@ -1,6 +1,33 @@
 <div class="thanks expand" ng-controller="ThanksController as thanksCtrl">
 
 <div class="header">
+    <img class="logo" src="/dist/img/logo.png" />
+    <div class="logo-text">
+        <span class="care">C.A.R.E</span>
+        <span class="cadets">Cadets</span>
+    </div>
+</div>
+
+<div class="postcard">
+    <div class="left">
+        <div>Dear Rose,</div>        
+        <div class="input-field">
+            <input id="message" type="text" ng-model="thanksCtrl.message" />
+        </div>                  
+        <div class="input-field">
+            <input placeholder="Please enter your message" id="message2" type="text" ng-model="thanksCtrl.message2" />
+        </div>                  
+        <div class="input-field">
+            <input id="message3" type="text" ng-model="thanksCtrl.message3" />
+        </div>                  
+    </div>
+    <div class="right">
+        <div class="stamp"></div>
+        <div class="name">Rose</div>
+        <div class="country">England</div>
+    </div>
+    <button class="waves-effect waves-light btn" ng-click="thanksCtrl.postThankYou()">SEND</button>
+    <div class="sent" ng-class="{'appear': thanksCtrl.isSent}">SENT</div>        
 </div>
 
 {{thanksCtrl.donationId}}

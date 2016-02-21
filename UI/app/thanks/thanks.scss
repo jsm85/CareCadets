@@ -1,3 +1,90 @@
 .thanks{
     padding-top: 200px;
+    background-color: #88E014;
+    
+    .postcard {
+        position: relative;
+        width: 800px;
+        height: 500px;
+        margin: auto;
+        background-color: #fff;
+        border: 2px solid #AAA;
+        box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+        transform: rotate(-4deg);
+        padding: 50px;
+        
+        .left {
+            display: inline-block;
+            width: 49%;
+            padding-right: 50px;
+            
+            div:eq(0) {
+                margin-bottom: 30px;
+            }
+        }
+        
+        .right {
+            position: relative;            
+            display: inline-block;
+            width: 49%;
+            height: 100%;
+            border-left: 2px solid #AAA;
+            
+            .stamp {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 110px;
+                height: 130px;
+                border: 1px solid #000;
+                background: url('/dist/img/girl.png');                    
+                background-size: 120px;
+                background-repeat: no-repeat;
+                background-position-x: -5px;
+                background-position-y: -10px;
+                background-color: #EAFAFF;
+                border: 4px solid #336ABB;                
+            }
+            
+            .name {
+                position: absolute;
+                top: 150px;
+                right: 0;
+                width: 110px;
+                border-bottom: 1px solid #9e9e9e;                
+            }
+            
+            .country {
+                position: absolute;
+                top: 200px;
+                right: 0;
+                width: 110px;
+                border-bottom: 1px solid #9e9e9e;                
+            }
+        }
+        
+        .btn {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            color: #fff !important;
+            outline: none;
+        }
+        
+        .sent {
+            color: #FF7600;
+            font-family: 'Militar';
+            position: absolute;
+            font-size: 245px;
+            transform: rotate(-25deg);
+            top: 78px;
+            opacity: 0;
+            transition: 0.5 opacity ease-in-out;
+            
+            &.appear {
+                opacity: 1;
+            }            
+        }
+            
+    }
 }

@@ -6,8 +6,11 @@ import LazyLoading = require('common/lazyLoading.module');
 class ThanksController {
 	http: ng.IHttpService;
 	donationId: String;
-	message: String;
 	donation: any;
+    message: string;
+    message2: string;
+    message3: string;
+    isSent: boolean;
 	
 	static $inject = [
 		'$scope',
@@ -15,13 +18,13 @@ class ThanksController {
 		'$http'
 	];
 
-	constructor(scope: ng.IScope, $routeParams: any, $http: ng.IHttpService) {
-        
-        console.log('Hi');
-        
+	constructor(scope: ng.IScope, $routeParams: any, $http: ng.IHttpService) {        
 		this.http = $http;
 		this.donationId = $routeParams.donationId;
-		this.message = '';
+		this.message = 'Thank you so much for your donation!';
+        this.message2 = '';
+        this.message3 = '';
+        this.isSent = false;
 
 		this.getDonation();
 	}
@@ -32,7 +35,6 @@ class ThanksController {
 			url: 'http://169.45.223.101:8000/donations/' + this.donationId
 		}).then((result) => {
 			this.donation = result;
-			console.log(this.donation);
         });
 	}
 
@@ -40,9 +42,9 @@ class ThanksController {
         this.http({
 			method: 'POST',
 			url: 'http://169.45.223.101:8000/thanks/' + this.donationId,
-			data: this.message
+			data: { message: this.message + this.message2 + this.message3 }
 		}).then((result) => {
-			console.log(result);
+            this.isSent = true;
         });
     }
 }

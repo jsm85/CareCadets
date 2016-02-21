@@ -46,12 +46,13 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.message = '';
             this.location = location;
             this.getOrganizations();
+            this.getText();
         };
         RoomController.prototype.getText = function () {
             var _this = this;
             this.http({
                 method: 'GET',
-                url: 'http://169.45.223.101:8000/pages/rose/' + this.item + '/' + this.location
+                url: 'http://169.45.223.101:8000/pages/guest/' + this.item + '/' + this.location
             }).then(function (result) {
                 _this.text = result.data;
             });
