@@ -7,6 +7,7 @@ class ThanksController {
 	http: ng.IHttpService;
 	donationId: String;
 	message: String;
+	donation: any;
 	
 	static $inject = [
 		'$scope',
@@ -17,12 +18,26 @@ class ThanksController {
 	constructor(scope: ng.IScope, $routeParams: any, $http: ng.IHttpService) {
 		this.http = $http;
 		this.donationId = $routeParams.donationId;
+		this.message = '';
+
+		getDonation();
+	}
+
+	getDonation() {
+		this.http({
+			method: 'GET',
+			url: 'http://169.45.223.101:8000/donations/' + this.donationId
+		}).then((result) => {
+			this.donation = result;
+			console.log(this.donation);
+        });
 	}
 
 	postThankYou() {
         this.http({
 			method: 'POST',
-			url: 'http://169.45.223.101:8000/thanks/' + this.donationId
+			url: 'http://169.45.223.101:8000/thanks/' + this.donationId,
+			data: this.message
 		}).then((result) => {
 			console.log(result);
         });
