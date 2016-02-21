@@ -6,8 +6,6 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.timeout = $timeout;
             this.redirectService = redirectService;
             this.http = http;
-            this.organizations = [];
-            this.donationId = '';
             this.init();
         }
         RoomController.prototype.init = function () {
@@ -15,6 +13,9 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.message = '';
             this.item = '';
             this.location = '';
+            this.organizations = [];
+            this.donationId = '';
+            this.bitlyUrl = '';
         };
         RoomController.prototype.startDonation = function () {
             this.step = 1;
@@ -64,12 +65,11 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
                 _this.organizations = result.data;
                 _this.timeout(function () {
                     $('.summary').addClass('appear');
-                }, 1000);
+                }, 500);
             });
         };
         RoomController.prototype.proceed = function () {
             var _this = this;
-            this.step = 4;
             this.http({
                 method: 'POST',
                 url: 'http://169.45.223.101:8000/donations',
@@ -79,11 +79,23 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
                     location: this.location
                 }
             }).then(function (result) {
-                _this.donationId = result._id;
+                _this.donationId = result.data.insertedIds[0];
+                _this.bitly();
+            });
+        };
+        RoomController.prototype.bitly = function () {
+            var _this = this;
+            this.http({
+                method: 'GET',
+                url: 'https://api-ssl.bitly.com/v3/shorten?access_token=c47fc429f20a73230d3e9023ffc0c24cc10d87ab&longUrl=http%3A%2F%2F169.45.223.101%2Fapp%2F%23%2Fthanks%2F' + this.donationId
+            }).then(function (result) {
+                _this.step = 4;
+                _this.bitlyUrl = result.data.data.url;
             });
         };
         RoomController.prototype.print = function () {
             window.print();
+            this.init();
         };
         RoomController.$inject = [
             '$scope',

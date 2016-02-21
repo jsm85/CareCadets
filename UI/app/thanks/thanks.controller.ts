@@ -16,11 +16,14 @@ class ThanksController {
 	];
 
 	constructor(scope: ng.IScope, $routeParams: any, $http: ng.IHttpService) {
+        
+        console.log('Hi');
+        
 		this.http = $http;
 		this.donationId = $routeParams.donationId;
 		this.message = '';
 
-		getDonation();
+		this.getDonation();
 	}
 
 	getDonation() {

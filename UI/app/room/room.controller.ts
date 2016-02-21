@@ -17,6 +17,7 @@ class RoomController {
     text: any;
     organizations: any;
     donationId: string;
+    bitlyUrl: string;
 
     static $inject = [
 		'$scope',
@@ -29,9 +30,6 @@ class RoomController {
 		this.timeout = $timeout;
 		this.redirectService = redirectService;
         this.http = http;
-        this.organizations = [];
-        this.donationId = '';        
-        
         this.init();
 	}    
     
@@ -40,6 +38,9 @@ class RoomController {
         this.message = '';
         this.item = '';
         this.location = '';
+        this.organizations = [];
+        this.donationId = '';        
+        this.bitlyUrl = '';
     }
     
     startDonation() {
@@ -96,12 +97,11 @@ class RoomController {
             this.organizations = result.data;
             this.timeout(() => {
                 $('.summary').addClass('appear');
-            }, 1000);            
+            }, 500);            
         });
     }    
     
     proceed() {
-        this.step = 4;
         this.http({
 			method: 'POST',
 			url: 'http://169.45.223.101:8000/donations',
@@ -111,12 +111,24 @@ class RoomController {
                 location: this.location
             }
 		}).then((result) => {
-            this.donationId = (<any>result)._id;
+            this.donationId = (<any>result.data).insertedIds[0];
+            this.bitly();
         });
+    }
+    
+    bitly() {
+        this.http({
+            method: 'GET',
+            url: 'https://api-ssl.bitly.com/v3/shorten?access_token=c47fc429f20a73230d3e9023ffc0c24cc10d87ab&longUrl=http%3A%2F%2F169.45.223.101%2Fapp%2F%23%2Fthanks%2F' + this.donationId
+        }).then((result) => {
+            this.step = 4;      
+            this.bitlyUrl = (<any>result.data).data.url;      
+        });        
     }
     
     print() {
         window.print();
+        this.init();
     }
 }
 

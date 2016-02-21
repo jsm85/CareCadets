@@ -2,10 +2,11 @@
 define(["require", "exports", 'common/lazyLoading.module'], function (require, exports, LazyLoading) {
     var ThanksController = (function () {
         function ThanksController(scope, $routeParams, $http) {
+            console.log('Hi');
             this.http = $http;
             this.donationId = $routeParams.donationId;
             this.message = '';
-            getDonation();
+            this.getDonation();
         }
         ThanksController.prototype.getDonation = function () {
             var _this = this;
