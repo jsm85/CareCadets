@@ -77,6 +77,7 @@ class RoomController {
         this.message = '';
         this.location = location;
         this.getOrganizations();
+        this.getText();
     }
     
     getText() {        
