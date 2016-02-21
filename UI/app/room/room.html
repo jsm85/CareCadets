@@ -15,15 +15,15 @@
     </div>
     
     <div class="items" ng-show="roomCtrl.step === 1">
-        <button class="btn big" ng-click="roomCtrl.selectItem('toys')">TOYS</button>        
-        <button class="btn big" ng-click="roomCtrl.selectItem('clothes')">CLOTHES</button>        
-        <button class="btn big" ng-click="roomCtrl.selectItem('books')">BOOK</button>        
+        <button class="btn big toys" ng-click="roomCtrl.selectItem('toys')">TOYS</button>        
+        <button class="btn big clothes" ng-click="roomCtrl.selectItem('clothes')">CLOTHES</button>        
+        <button class="btn big books" ng-click="roomCtrl.selectItem('books')">BOOKS</button>        
     </div>
     
     <div class="locations" ng-show="roomCtrl.step === 2">
-        <button class="btn big" ng-click="roomCtrl.selectLocation('school')">SCHOOL</button>        
-        <button class="btn big" ng-click="roomCtrl.selectLocation('hospital')">HOSPITAL</button>        
-        <button class="btn big" ng-click="roomCtrl.selectLocation('charities')">CHARITY</button>        
+        <button class="btn big school_icon" ng-click="roomCtrl.selectLocation('school')">SCHOOL</button>        
+        <button class="btn big hospital_icon" ng-click="roomCtrl.selectLocation('hospital')">HOSPITAL</button>        
+        <button class="btn big charity_icon" ng-click="roomCtrl.selectLocation('charities')">CHARITY</button>        
     </div>
     
     <div class="summary" ng-show="roomCtrl.step === 3">
@@ -58,6 +58,9 @@
                 <a href="javascript:;">{{roomCtrl.bitlyUrl}}</a>
             </div>     
         </div>
+    </div>
+    
+    <div class="reward" ng-class="{'appear': roomCtrl.showBadge}">
     </div>
              
     <div class="footer">

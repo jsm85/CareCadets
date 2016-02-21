@@ -73,6 +73,44 @@
            color: #fff !important;
            outline: none;
            margin: 50px;            
+           box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+           
+           &.toys {
+                background: url('/dist/img/toys.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 140px;
+                background-position-x: 28px;
+                background-position-y: 32px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+           }
+                               
+           &.clothes {
+                background: url('/dist/img/clothes.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 120px;
+                background-position-x: 30px;
+                background-position-y: 26px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+                padding-left: 17px;
+           }
+                               
+           &.books {
+                background: url('/dist/img/book.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 90px;
+                background-position-x: 50px;
+                background-position-y: 30px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+           }                    
        }
    }
    
@@ -87,8 +125,45 @@
            color: #fff !important;
            outline: none;
            margin: 50px;    
-           margin-right: 30px;
-           margin-left: 30px;        
+           
+           &.school_icon {
+                background: url('/dist/img/school_icon.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 180px;
+                background-position-x: 10px;
+                background-position-y: 32px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+           }
+           
+           &.hospital_icon {
+                background: url('/dist/img/hospital_icon.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 190px;
+                background-position-x: 1px;
+                background-position-y: 32px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+                padding-left: 12px;
+           }
+
+           &.charity_icon {
+                background: url('/dist/img/charity.png');
+                background-color: #FF7600;
+                background-repeat: no-repeat;
+                background-size: 190px;
+                background-position-x: 1px;
+                background-position-y: 32px;
+                font-size: 32px;
+                text-shadow: 2px 2px 2px #000;
+                padding-top: 140px;
+                padding-left: 22px;                
+           }
+                   
        }
    }
    
@@ -121,7 +196,7 @@
         
         ul {
             width: 100%;
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
                 
             li {
@@ -196,7 +271,26 @@
             }
         }        
    }
-       
+   
+   .reward {
+        position: absolute;
+        top: 250px;
+        right: 50px;
+        width: 100px;
+        height: 200px;
+        background: url(/dist/img/reward.png) no-repeat;
+        background-size: contain;
+        opacity: 0;
+        transform: scale(2);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out, left 1s ease-in-out; 
+        
+        &.appear{
+            opacity: 1;
+            transform: scale(1);            
+            right: 490px;
+        }      
+   }
+   
     .footer {
         text-align: center;
         

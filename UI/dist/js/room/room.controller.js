@@ -16,6 +16,7 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.organizations = [];
             this.donationId = '';
             this.bitlyUrl = '';
+            this.showBadge = false;
         };
         RoomController.prototype.startDonation = function () {
             this.step = 1;
@@ -95,8 +96,14 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             });
         };
         RoomController.prototype.print = function () {
-            window.print();
+            var _this = this;
             this.init();
+            this.showBadge = true;
+            this.timeout(function () {
+                _this.timeout(function () {
+                    window.print();
+                }, 1500);
+            }, 500);
         };
         RoomController.$inject = [
             '$scope',

@@ -18,6 +18,7 @@ class RoomController {
     organizations: any;
     donationId: string;
     bitlyUrl: string;
+    showBadge: boolean;
 
     static $inject = [
 		'$scope',
@@ -41,6 +42,7 @@ class RoomController {
         this.organizations = [];
         this.donationId = '';        
         this.bitlyUrl = '';
+        this.showBadge = false;
     }
     
     startDonation() {
@@ -122,14 +124,19 @@ class RoomController {
             method: 'GET',
             url: 'https://api-ssl.bitly.com/v3/shorten?access_token=c47fc429f20a73230d3e9023ffc0c24cc10d87ab&longUrl=http%3A%2F%2F169.45.223.101%2Fapp%2F%23%2Fthanks%2F' + this.donationId
         }).then((result) => {
-            this.step = 4;      
-            this.bitlyUrl = (<any>result.data).data.url;      
+            this.step = 4;
+            this.bitlyUrl = (<any>result.data).data.url;
         });        
     }
     
     print() {
-        window.print();
         this.init();
+        this.showBadge = true;
+        this.timeout(() => {
+            this.timeout(() => {
+                window.print();
+            }, 1500);                                  
+        }, 500);      
     }
 }
 
