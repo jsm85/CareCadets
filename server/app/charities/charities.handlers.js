@@ -1,9 +1,5 @@
 var http = require('http');
 
-var routes = [
-  { method: 'GET', path:'/charities', handler: getCharities },
-];
-
 function getCharities(request, reply) {
   var orgHunterReq = {
     method: 'GET',
@@ -11,7 +7,7 @@ function getCharities(request, reply) {
     path: '/v1/charitysearch?user_key=7b302cfd41ae4d5417695cb4030edfa6&rows=1000&eligible=1'
   };
 
-  function callback(response) {
+  callback = (response) => {
     var result = '';
 
     response.on('data', (chunk) => result += chunk);
@@ -34,5 +30,6 @@ function getCharities(request, reply) {
   http.request(orgHunterReq, callback).end();
 }
 
-
-module.exports = routes;
+module.exports = {
+  getCharities: getCharities
+}

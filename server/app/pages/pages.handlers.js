@@ -1,10 +1,6 @@
 var donationTypes = require('./donationTypes.js');
 var places = require('./places.js');
 
-var routes = [
-  { method: 'GET', path:'/pages/{username}/{donationType}/{place}', handler: getPage }
-];
-
 function getPage(request, reply) {
   var name = request.params.username;
   var donationType = donationTypes[request.params.donationType];
@@ -20,4 +16,6 @@ function getPage(request, reply) {
   reply(result);
 }
 
-module.exports = routes;
+module.exports = {
+  getPage: getPage,
+};

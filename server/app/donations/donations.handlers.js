@@ -3,12 +3,6 @@ var MongoClient = Mongo.MongoClient;
 
 var mongoDbConnectionString = 'mongodb://localhost:27017/care_cadets';
 
-var routes = [
-  { method: 'GET', path:'/donations/{username}', handler: getDonations },
-  { method: 'POST', path:'/donations', handler: postDonation },
-  { method: 'POST', path:'/thanks/{donationId}', handler: postThanks },
-];
-
 function getDonations(request, reply) {
   MongoClient.connect(mongoDbConnectionString, (err, db) => {
     if(err) {
@@ -60,4 +54,8 @@ function postThanks(request, reply) {
   });
 }
 
-module.exports = routes;
+module.exports = {
+  getDonations: getDonations,
+  postDonation: postDonation, 
+  postThanks: postThanks,
+};
