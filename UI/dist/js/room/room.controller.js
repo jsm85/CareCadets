@@ -97,7 +97,7 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
         };
         RoomController.prototype.print = function () {
             var _this = this;
-            this.init();
+            this.step = 0;
             this.showBadge = true;
             this.timeout(function () {
                 _this.timeout(function () {

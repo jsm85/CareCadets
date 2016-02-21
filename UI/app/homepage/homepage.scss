@@ -1,15 +1,15 @@
 $orange: #FF7600;
 
 .homepage {
-    background: url('/dist/img/bg.jpg');
-    background-size: cover;
-    background-position-y: 150px;
-        
+    img.intro {
+        width: 100%;
+    }
+            
     .boy {
         position: absolute;
-        bottom: 50px;
-        left: 50px;        
-        width: 300px;                        
+        bottom: 25px;
+        left: 15px;
+        width: 250px;
     }
     
     .login {
@@ -20,7 +20,8 @@ $orange: #FF7600;
         top: 10px;
         padding: 15px;
         border-radius: 8px;
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);        
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.5);    
+        border: 1px solid #ccc;    
         
         label {
             left: 0;
@@ -56,9 +57,10 @@ $orange: #FF7600;
         top: 271px;
         right: 50px;
         font-weight: 700;
-        color: #666;
+        color: #AFAFAF;
         cursor: pointer;
         font-size: 14px;
+        text-shadow: 1px 1px 1px #000;
     }
 }
     

@@ -130,7 +130,7 @@ class RoomController {
     }
     
     print() {
-        this.init();
+        this.step = 0;
         this.showBadge = true;
         this.timeout(() => {
             this.timeout(() => {
