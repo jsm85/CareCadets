@@ -1,4 +1,4 @@
-<div class="room expand" ng-controller="RoomController as roomCtrl">
+<div class="room expand" ng-class="{'hospital': roomCtrl.location === 'hospital', 'school': roomCtrl.location === 'school', 'charities': roomCtrl.location === 'charities'}" ng-controller="RoomController as roomCtrl">
 
     <div class="header">
         <img class="logo" src="/dist/img/logo.png" />
@@ -15,22 +15,21 @@
     </div>
     
     <div class="items" ng-show="roomCtrl.step === 1">
-        <button class="btn big" ng-click="roomCtrl.selectItem('bear')">BEAR</button>        
+        <button class="btn big" ng-click="roomCtrl.selectItem('toys')">BEAR</button>        
         <button class="btn big" ng-click="roomCtrl.selectItem('clothes')">CLOTHES</button>        
-        <button class="btn big" ng-click="roomCtrl.selectItem('book')">BOOK</button>        
+        <button class="btn big" ng-click="roomCtrl.selectItem('books')">BOOK</button>        
     </div>
     
     <div class="locations" ng-show="roomCtrl.step === 2">
         <button class="btn big" ng-click="roomCtrl.selectLocation('school')">SCHOOL</button>        
         <button class="btn big" ng-click="roomCtrl.selectLocation('hospital')">HOSPITAL</button>        
-        <button class="btn big" ng-click="roomCtrl.selectLocation('charity')">CHARITY</button>        
+        <button class="btn big" ng-click="roomCtrl.selectLocation('charities')">CHARITY</button>        
     </div>
     
     <div class="summary" ng-show="roomCtrl.step === 3">
         <p class="title">BENEFITS OF YOUR DONATION</p>
-        <img src="" />
         <p class="description">
-            Blah Blah
+            {{roomCtrl.text}}
         </p>        
         <p class="organizations">ORGANIZATIONS WHERE I CAN DONATE</p>
         <ul>
@@ -40,6 +39,16 @@
                 <div class="address">{{organization.city}}, {{organization.state}}</div>
             </li>
         </ul>
+    </div>
+    
+    <div class="print" ng-show="roomCtrl.step === 4">
+        <p class="title">NOW PRINT THIS LABEL AND ATTACH IT TO YOUR DONATION</p>
+        <p class="description">
+            Blah blah
+        </p>
+        <div class="code">        
+            <img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=http%3A%2F%2F169.45.223.101%2Fapp%2F%23%2Fthanks%2F{{roomCtrl.donationId}}" />
+        </div>
     </div>
              
     <div class="footer">

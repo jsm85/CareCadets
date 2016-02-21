@@ -14,7 +14,9 @@ class RoomController {
     item: string;
     location: string;
     action: string;
+    text: any;
     organizations: any;
+    donationId: string;
 
     static $inject = [
 		'$scope',
@@ -27,10 +29,10 @@ class RoomController {
 		this.timeout = $timeout;
 		this.redirectService = redirectService;
         this.http = http;
-        this.organizations = [];        
+        this.organizations = [];
+        this.donationId = '';        
         
         this.init();
-        this.getOrganizations();
 	}    
     
     init() {
@@ -38,6 +40,8 @@ class RoomController {
         this.message = '';
         this.item = '';
         this.location = '';
+        
+        console.log('Hi');
     }
     
     startDonation() {
@@ -73,20 +77,33 @@ class RoomController {
     selectLocation(location: string) {
         this.step = 3;
         this.message = '';
-        this.location = location;                        
+        this.location = location;
+        this.getOrganizations();
+    }
+    
+    getText() {        
+        this.http({
+			method: 'GET',
+			url: 'http://169.45.223.101:8000/pages/rose/' + this.item + '/' + this.location 
+		}).then((result) => {
+            this.text = result.data;
+        });
     }
     
     getOrganizations() {
         this.http({
 			method: 'GET',
-			url: 'http://169.45.223.101:8000/charities'
+			url: 'http://169.45.223.101:8000/charities/' + this.location
 		}).then((result) => {
             this.organizations = result.data;
+            this.timeout(() => {
+                $('.summary').addClass('appear');
+            }, 1000);            
         });
     }    
     
     proceed() {
-        console.log('Proceed');
+        this.step = 4;
     }
 }
 
