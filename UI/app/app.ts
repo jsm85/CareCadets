@@ -10,7 +10,6 @@ const Routes = [
 	{url: '/room', template: 'app/room/room.html', controller: 'room/room.controller', secure: false },
   {url: '/thanks/:id', template: 'app/thanks/thanks.html', controller: 'thanks/thanks.controller', secure: false },
   {url: '/glossary', template: 'app/glossary/glossary.html', controller: 'glossary/glossary.controller', secure: false },
-	{url: '/info', template: 'app/info/info.html', controller: 'info/info.controller', secure: false },
 ];
 
 LazyLoading.Application.initializeAngular(Routes);

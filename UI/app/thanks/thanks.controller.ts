@@ -1,24 +1,30 @@
 /// <reference path="../../typings/tsd.d.ts" />
-/// <amd-dependency path="common/redirect.service" />
 
 import Global = require('common/global.module');
 import LazyLoading = require('common/lazyLoading.module');
-import RedirectService = require('common/redirect.service');
 
 class ThanksController {
-	timeout: ng.ITimeoutService;
-	redirectService: RedirectService;
+	http: ng.IHttpService;
+	message: String;
+	donationId: String;
 
-    static $inject = [
+	static $inject = [
 		'$scope',
-		'$timeout',
-		'RedirectService'
-    ];
+		'$http'
+	];
 
-	constructor(scope: ng.IScope, $timeout: ng.ITimeoutService, redirectService: RedirectService) {
-		this.timeout = $timeout;
-		this.redirectService = redirectService;
-	}    
+	constructor(scope: ng.IScope, $http: ng.IHttpService) {
+		this.http = $http;
+	}
+
+	postThankYou() {
+        this.http({
+			method: 'POST',
+			url: 'http://169.45.223.101:8000/thanks/' + this.donationId
+		}).then((result) => {
+			console.log(result);
+        });
+    }
 }
 
 LazyLoading.Application.registerController('ThanksController', ThanksController);
