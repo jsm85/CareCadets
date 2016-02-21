@@ -20,7 +20,7 @@ class ThanksController {
 		this.donationId = $routeParams.donationId;
 		this.message = '';
 
-		getDonation();
+		this.getDonation();
 	}
 
 	getDonation() {

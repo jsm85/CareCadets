@@ -82,7 +82,7 @@ class RoomController {
     getText() {        
         this.http({
 			method: 'GET',
-			url: 'http://169.45.223.101:8000/pages/rose/' + this.item + '/' + this.location 
+			url: 'http://169.45.223.101:8000/pages/guest/' + this.item + '/' + this.location 
 		}).then((result) => {
             this.text = result.data;
         });
