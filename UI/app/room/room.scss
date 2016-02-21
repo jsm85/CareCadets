@@ -274,10 +274,10 @@
    
    .reward {
         position: absolute;
-        top: 250px;
-        right: 50px;
-        width: 100px;
-        height: 200px;
+        top: 58%;
+        right: 0;
+        width: 140px;
+        height: 230px;
         background: url(/dist/img/reward.png) no-repeat;
         background-size: contain;
         opacity: 0;
@@ -287,7 +287,7 @@
         &.appear{
             opacity: 1;
             transform: scale(1);            
-            right: 490px;
+            right: calc(50% - 70px);
         }      
    }
    
