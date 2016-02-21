@@ -4,5 +4,6 @@ module.exports = [
   { method: 'GET', path:'/donations/{donationId}', handler: handlers.getDonation },
   { method: 'GET', path:'/donations/by/{username}', handler: handlers.getDonations },
   { method: 'POST', path:'/donations', handler: handlers.postDonation },
+  { method: 'GET', path:'/thanks/{username}', handler: handlers.getThanks },
   { method: 'POST', path:'/thanks/{donationId}', handler: handlers.postThanks },
 ];

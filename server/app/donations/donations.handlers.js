@@ -46,6 +46,21 @@ function postDonation(request, reply) {
   });
 }
 
+function getThanks(request, reply) {
+  MongoClient.connect(mongoDbConnectionString, (err, db) => {
+    if(err) {
+      throw err;
+    }
+
+    var cursor = db.collection('donations').find({username: request.params.username, thanked: true});
+
+    cursor.toArray((err, donations) => {
+        db.close();
+        reply(donations);
+    });
+  });
+}
+
 function postThanks(request, reply) {
   MongoClient.connect(mongoDbConnectionString, (err, db) => {
     if(err) {
@@ -73,5 +88,6 @@ module.exports = {
   getDonation: getDonation,
   getDonations: getDonations,
   postDonation: postDonation, 
+  getThanks: getThanks, 
   postThanks: postThanks,
 };
