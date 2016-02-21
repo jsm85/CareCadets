@@ -1,15 +1,20 @@
 /// <reference path="../../typings/tsd.d.ts" />
-/// <amd-dependency path="common/redirect.service" />
-define(["require", "exports", 'common/lazyLoading.module', "common/redirect.service"], function (require, exports, LazyLoading) {
+define(["require", "exports", 'common/lazyLoading.module'], function (require, exports, LazyLoading) {
     var ThanksController = (function () {
-        function ThanksController(scope, $timeout, redirectService) {
-            this.timeout = $timeout;
-            this.redirectService = redirectService;
+        function ThanksController(scope, $http) {
+            this.http = $http;
         }
+        ThanksController.prototype.postThankYou = function () {
+            this.http({
+                method: 'POST',
+                url: 'http://169.45.223.101:8000/thanks/' + this.donationId
+            }).then(function (result) {
+                console.log(result);
+            });
+        };
         ThanksController.$inject = [
             '$scope',
-            '$timeout',
-            'RedirectService'
+            '$http'
         ];
         return ThanksController;
     })();
