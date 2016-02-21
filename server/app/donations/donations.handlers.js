@@ -3,6 +3,21 @@ var MongoClient = Mongo.MongoClient;
 
 var mongoDbConnectionString = 'mongodb://localhost:27017/care_cadets';
 
+function getDonation(request, reply) {
+  MongoClient.connect(mongoDbConnectionString, (err, db) => {
+    if(err) {
+      throw err;
+    }
+
+    var cursor = db.collection('donations').find({'_id': new Mongo.ObjectID(request.params.donationId)});
+
+    cursor.toArray((err, donations) => {
+        db.close();
+        reply(donations[0]);
+    });
+  });
+}
+
 function getDonations(request, reply) {
   MongoClient.connect(mongoDbConnectionString, (err, db) => {
     if(err) {
@@ -55,6 +70,7 @@ function postThanks(request, reply) {
 }
 
 module.exports = {
+  getDonation: getDonation,
   getDonations: getDonations,
   postDonation: postDonation, 
   postThanks: postThanks,

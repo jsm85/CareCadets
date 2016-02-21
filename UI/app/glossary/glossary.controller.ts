@@ -7,9 +7,9 @@ import RedirectService = require('common/redirect.service');
 
 class GlossaryController {
 	
-    static $inject = [
+	static $inject = [
 		'$scope'
-    ];
+	];
 
 	constructor(scope: ng.IScope) {
 		console.log('hi');
