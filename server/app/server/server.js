@@ -2,7 +2,8 @@ var Hapi = require('hapi');
 var http = require('http');
 
 var server = new Hapi.Server();
-var MongoClient = require('mongodb').MongoClient;
+var Mongo = require('mongodb');
+var MongoClient = Mongo.MongoClient;
 
 var donationTypes = require('../pages/donationTypes.js');
 var places = require('../pages/places.js');
@@ -24,10 +25,11 @@ server.route({
         throw err;
       }
 
-      var collection = db.collection('donations');
-      collection.find({username: request.params.username}, (err, docs) => {
-        db.close();
-        reply(docs);
+      var cursor = db.collection('donations').find({username: request.params.username});
+
+      cursor.toArray((err, donations) => {
+          db.close();
+          reply(donations);
       });
     });
   }
@@ -42,11 +44,38 @@ server.route({
         throw err;
       }
 
-      var collection = db.collection('donations');
-      collection.insert(request.payload, (err, docs) => {
+      db.collection('donations').insert(request.payload, (err, docs) => {
         db.close();
         reply(docs);
       });
+    });
+  }
+});
+
+server.route({
+  method: 'POST',
+  path:'/thanks/{donationId}',
+  handler: (request, reply) => {
+    MongoClient.connect(mongoDbConnectionString, (err, db) => {
+      if(err) {
+        throw err;
+      }
+
+      var query = {
+        '_id': new Mongo.ObjectID(request.params.donationId)
+      };
+
+      var setObj = {
+        $set: { 
+          'thanked': true,
+          'thankYouMessage': request.payload
+        }
+      };
+
+      db.collection('donations').updateOne(query, setObj, (err) => {
+        reply();
+     });
+
     });
   }
 });
