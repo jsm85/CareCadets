@@ -7,14 +7,15 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.redirectService = redirectService;
             this.http = http;
             this.organizations = [];
+            this.donationId = '';
             this.init();
-            this.getOrganizations();
         }
         RoomController.prototype.init = function () {
             this.step = 0;
             this.message = '';
             this.item = '';
             this.location = '';
+            console.log('Hi');
         };
         RoomController.prototype.startDonation = function () {
             this.step = 1;
@@ -44,18 +45,31 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.step = 3;
             this.message = '';
             this.location = location;
+            this.getOrganizations();
+        };
+        RoomController.prototype.getText = function () {
+            var _this = this;
+            this.http({
+                method: 'GET',
+                url: 'http://169.45.223.101:8000/pages/rose/' + this.item + '/' + this.location
+            }).then(function (result) {
+                _this.text = result.data;
+            });
         };
         RoomController.prototype.getOrganizations = function () {
             var _this = this;
             this.http({
                 method: 'GET',
-                url: 'http://169.45.223.101:8000/charities'
+                url: 'http://169.45.223.101:8000/charities/' + this.location
             }).then(function (result) {
                 _this.organizations = result.data;
+                _this.timeout(function () {
+                    $('.summary').addClass('appear');
+                }, 1000);
             });
         };
         RoomController.prototype.proceed = function () {
-            console.log('Proceed');
+            this.step = 4;
         };
         RoomController.$inject = [
             '$scope',
