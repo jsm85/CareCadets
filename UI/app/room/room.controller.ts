@@ -40,8 +40,6 @@ class RoomController {
         this.message = '';
         this.item = '';
         this.location = '';
-        
-        console.log('Hi');
     }
     
     startDonation() {
@@ -104,6 +102,21 @@ class RoomController {
     
     proceed() {
         this.step = 4;
+        this.http({
+			method: 'POST',
+			url: 'http://169.45.223.101:8000/donations',
+            data: {
+                user: 'guest',
+                item: this.item,
+                location: this.location
+            }
+		}).then((result) => {
+            this.donationId = (<any>result)._id;
+        });
+    }
+    
+    print() {
+        window.print();
     }
 }
 

@@ -42,12 +42,21 @@
     </div>
     
     <div class="print" ng-show="roomCtrl.step === 4">
-        <p class="title">NOW PRINT THIS LABEL AND ATTACH IT TO YOUR DONATION</p>
+        <p class="title">ATTACH THIS LABEL TO YOUR DONATION</p>
         <p class="description">
-            Blah blah
+            Print this label and attach it to the item you are donating.
         </p>
         <div class="code">        
             <img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=http%3A%2F%2F169.45.223.101%2Fapp%2F%23%2Fthanks%2F{{roomCtrl.donationId}}" />
+            <div class="logo-text">
+                <span class="care">C.A.R.E</span>
+                <span class="cadets">Cadets</span>
+            </div>       
+            <div class="explanation">
+                Say thank you to the child that has donated this item. You can either scan the QR Code or enter the following address:
+                
+                <a href="http://bit.ly/1mEQSjf">http://bit.ly/1mEQSjf</a>
+            </div>     
         </div>
     </div>
              
@@ -55,6 +64,7 @@
         <button class="btn big" ng-show="roomCtrl.step === 0" ng-click="roomCtrl.startDonation()">MAKE A DONATION!</button>
         <button class="btn big" ng-hide="roomCtrl.step === 0" ng-click="roomCtrl.back()">BACK</button>
         <button class="btn big" ng-show="roomCtrl.step === 3" ng-click="roomCtrl.proceed()">PROCEED</button>
+        <button class="btn big" ng-show="roomCtrl.step === 4" ng-click="roomCtrl.print()">PRINT</button>
         <img class="cadet" src="/dist/img/girl.png" />
     </div>    
 </div>

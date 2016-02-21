@@ -1,6 +1,6 @@
 .room {
    padding-top: 200px;
-   background: url('/dist/img/bg2.jpg'); 
+   background: url('/dist/img/Room.png'); 
    background-size: cover;
    background-position-y: -150px;
    
@@ -166,6 +166,34 @@
         .code {
             border: 1px solid #000000;
             position: relative;            
+            
+            img {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .logo-text {
+                top: 20px;
+                left: 300px;
+                
+                .care, .cadets {
+                    color: #000;
+                }
+            }
+            
+            .explanation {
+                top: 105px;
+                position: absolute;
+                width: calc(100% - 350px);
+                left: 302px;
+                font-size: 18px;
+                
+                a {
+                    display: block;
+                    font-size: 26px;
+                    margin-top: 30px;
+                }                
+            }
         }        
    }
        
@@ -185,5 +213,41 @@
             left: 50px;
             width: 315px;
         }        
+    }
+}
+
+@media print {
+    .header, .footer {
+        display: none;
+    }
+
+    .room {    
+        padding-top: 50px;
+        
+        .print {
+            border: none !important;
+            width: 100% !important;
+            
+            .title {
+                display: none;            
+            }
+            
+            .description {
+                display: none;
+            }
+            
+            .code {
+                transform: scale(0.8) translateX(-65px);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 800px;
+                background-color: #fff !important;
+                
+                a::after {
+                    content: '';
+                }
+            }
+        }
     }
 }

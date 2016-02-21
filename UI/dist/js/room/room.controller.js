@@ -15,7 +15,6 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             this.message = '';
             this.item = '';
             this.location = '';
-            console.log('Hi');
         };
         RoomController.prototype.startDonation = function () {
             this.step = 1;
@@ -69,7 +68,22 @@ define(["require", "exports", 'common/lazyLoading.module', "common/redirect.serv
             });
         };
         RoomController.prototype.proceed = function () {
+            var _this = this;
             this.step = 4;
+            this.http({
+                method: 'POST',
+                url: 'http://169.45.223.101:8000/donations',
+                data: {
+                    user: 'guest',
+                    item: this.item,
+                    location: this.location
+                }
+            }).then(function (result) {
+                _this.donationId = result._id;
+            });
+        };
+        RoomController.prototype.print = function () {
+            window.print();
         };
         RoomController.$inject = [
             '$scope',
