@@ -8,7 +8,7 @@ function getDonation(request, reply) {
     if(err) {
       throw err;
     }
-    
+
     var query = {'_id': new Mongo.ObjectID(request.params.donationId)};
     db.collection('donations').findOne(query, (err, doc) => {
         db.close();
@@ -73,7 +73,7 @@ function postThanks(request, reply) {
     var setObj = {
       $set: { 
         'thanked': true,
-        'thankYouMessage': request.payload
+        'thankYouMessage': request.payload.message
       }
     };
 
